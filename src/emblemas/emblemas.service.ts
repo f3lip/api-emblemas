@@ -12,8 +12,8 @@ export class EmblemasService {
     private emblemasRepository: Repository<Emblemas>,
   ) {}
 
-  create(createEmblemaDto: CreateEmblemaDto) {
-    return this.emblemasRepository.create(createEmblemaDto);
+  async create(createEmblemaDto: CreateEmblemaDto) {
+    return this.emblemasRepository.save(createEmblemaDto);
   }
 
   async findAll(): Promise<Emblemas[]> {
@@ -28,11 +28,11 @@ export class EmblemasService {
     return await this.emblemasRepository.findOneBy({slug});
   }
 
-  update(id: number, updateEmblemaDto: UpdateEmblemaDto) {
+  async update(id: number, updateEmblemaDto: UpdateEmblemaDto) {
     return this.emblemasRepository.update(id, updateEmblemaDto)
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return this.emblemasRepository.delete(id);
   }
 }
